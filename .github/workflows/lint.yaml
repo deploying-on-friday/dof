@@ -1,6 +1,6 @@
 name: Lint
 
-on: 
+on:
   pull_request:
   push:
     branches:
@@ -15,15 +15,12 @@ jobs:
 
       - name: Set up Go
         uses: actions/setup-go@v5
-        with: 
+        with:
           go-version: '1.22'
           cache: false
-      
-      - name: Install golangci-lint
+
+      - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
           version: latest
-      
-      - name: Run linter
-        working-directory: whoknows-server/go-server
-        run: golangci-lint run
+          working-directory: whoknows-server/go-server
