@@ -24,4 +24,5 @@ jobs:
           version: latest
       
       - name: Run linter
+        working-directory: whoknows-server/go-server
         run: golangci-lint run

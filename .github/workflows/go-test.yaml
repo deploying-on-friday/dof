@@ -19,11 +19,13 @@ jobs:
           go-version: '1.22'
       
       - name: Run tests with coverage
+        working-directory: whoknows-server/go-server
         run: |
           go test ./... -coverprofile=coverage.out
           go tool cover -func=coverage.out
 
       - name: Enforce minimum coverage
+        working-directory: whoknows-server/go-server
         run: |
           COVERAGE=$(go tool cover -func=coverage.out | grep total | awk '{print substr($3, 1, length($3)-1)}')
           echo "Total coverage: $COVERAGE%"
