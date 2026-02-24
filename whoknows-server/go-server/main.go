@@ -31,6 +31,7 @@ func fetchWeather() (map[string]interface{}, error) {
 // @BasePath /
 func main() {
 	r := mux.NewRouter()
+	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
 	// Serve static files
 	r.PathPrefix("/static/").
