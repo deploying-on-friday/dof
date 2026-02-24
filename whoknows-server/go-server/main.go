@@ -32,7 +32,10 @@ func fetchWeather() (map[string]interface{}, error) {
 func main() {
 	r := mux.NewRouter()
 
-	// HTML pages
+	// Serve static files
+	r.PathPrefix("/static/").
+		Handler(http.StripPrefix("/static/",
+			http.FileServer(http.Dir("./static"))))
 
 	// @Summary Serve Root Page
 	// @Router / [get]
